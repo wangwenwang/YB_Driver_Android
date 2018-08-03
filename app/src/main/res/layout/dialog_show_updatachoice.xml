@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white_et_bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5dp"
+        android:text="选择上传图片方式:"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/button_choicepicture_fromalbum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/blue"
+            android:text="相册照片"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/button_choicepicture_fromcamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/blue"
+            android:text="拍摄照片"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+</LinearLayout>

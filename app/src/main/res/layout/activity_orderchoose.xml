@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+    <com.kaidongyuan.app.basemodule.widget.SlidingTitleView
+        android:id="@+id/slidingTitelView_OrderChooseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.kaidongyuan.app.basemodule.widget.SlidingTitleView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\t未交付订单"
+        android:padding="4dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@color/yb_yellow"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/unpayedorders_recyclerView_OrderChooseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/track_text"
+        android:padding="1dp">
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="18sp"
+        android:text="\t已交付订单"
+        android:textColor="@color/white"
+        android:background="@color/yb_light_green"
+        />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="5">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/payedorders_recyclerView_OrderChooseActivity"
+        android:layout_width="match_parent"
+        android:background="@color/track_text"
+        android:layout_height="match_parent"
+        android:padding="1dp"
+        android:layout_gravity="center_horizontal|bottom" />
+    <RelativeLayout
+        android:id="@+id/rl_select_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingLeft="2dp"
+        android:paddingRight="0dp"
+        android:layout_gravity="center_horizontal|top"
+        >
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/dialog_blue"
+            android:hint="\t\t起始时间\t\t"
+            android:singleLine="true"
+            android:textColor="@color/gray"
+            android:gravity="center_vertical"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_start_time"
+            android:contentDescription="@null"
+            android:padding="0dp"
+            android:src="@drawable/blue_rectangle"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingLeft="0dp"
+        android:paddingRight="2dp"
+        android:layout_gravity="center_horizontal|bottom">
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/dialog_blue"
+            android:hint="\t\t结束时间\t\t"
+            android:layout_alignParentRight="true"
+            android:singleLine="true"
+            android:textColor="@color/gray"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_end_time"
+            android:contentDescription="@null"
+            android:padding="0dp"
+            android:src="@drawable/blue_rectangle"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
+
+
+</FrameLayout>
+
+</LinearLayout>

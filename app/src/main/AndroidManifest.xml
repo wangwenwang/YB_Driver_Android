@@ -1,0 +1,205 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.ybdriver">
+
+    <!--BaiduMap鹰眼权限注册-->
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--允许程序连接到已配对的蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!--允许程序发现和配对蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--允许应用读取低级别的系统日志文件 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!--允许访问振动设备-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--屏幕保持唤醒 不锁屏-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--允许应用程序更改主屏幕中的设置和快捷方式-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!--**************************************-->
+    <!--运行调用系统级别的提示窗体-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--允许调用摄影头权限-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- android:name=".app.AppContext" 让自己的AppContext在项目applicationonCreate时被指定为AppContext启动 -->
+    <application
+        android:name="com.example.administrator.ybdriver.app.AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Light.NoTitleBar">
+
+        <!--友盟推送的UMENG_APPKEY和UMENG_MESSAGE_SECRET-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57899b95e0f55a1b01002c3d" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="006f5c48c123f2980ef6d1e23317aa46" >
+        </meta-data>
+
+        <!--百度地图密匙key-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="MuKRvWuklKYwkMk5d8EgoM0lgHozhaUv" />
+        <!-- 启动页面-->
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.WelcomeActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+      <activity android:name="com.example.administrator.ybdriver.ui.activity.GuideActivity"
+          android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+          android:configChanges="orientation|screenSize"
+          android:screenOrientation="portrait"
+          />
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.RegisterActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.MainActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
+            />
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.OrderDetailActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
+            />
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.AboutActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
+            />
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.FeedBackActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
+            />
+        <activity android:name="com.example.administrator.ybdriver.ui.activity.UpdatePwdActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
+            />
+        <activity android:name=".ui.activity.OrderPayActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.activity.PhotoActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.activity.OrderChooseActivtiy"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.activity.OrderTrackActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.activity.ManageChartActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.ManageHorizontalChartActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
+        <!--工厂管理信息页面-->
+        <activity android:name=".ui.activity.FactoryHorizontalChartActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+
+        <!--二维码页面-->
+        <activity android:name=".ui.activity.ScanCodeActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name="com.google.zxing.activity.CaptureActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2"></action>
+            </intent-filter>
+        </service>
+
+      <!--注册双进程守护用的2个服务和广播-->
+        <service
+            android:name="com.example.administrator.ybdriver.servers.TrackingService"
+            android:process=":process1">
+            <intent-filter>
+                <action android:name="com.example.administrator.ybdriver.servers.TrackingService" />
+            </intent-filter>
+        </service>
+        <receiver android:name="com.example.administrator.ybdriver.servers.TrackingReceiver"
+            android:process=":process1"></receiver>
+
+        <service android:name="com.example.administrator.ybdriver.servers.DaemonService"
+                android:process=":push"
+            ></service>
+
+        <receiver android:name="com.example.administrator.ybdriver.servers.DaemonReceiver"
+            android:process=":push"></receiver>
+
+    </application>
+
+
+</manifest>

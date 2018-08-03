@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+    android:paddingBottom="0dp">
+<android.support.v7.widget.CardView
+    android:id="@+id/cardView_order"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardBackgroundColor="@color/line_color"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="3dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="交货单号："
+                android:textColor="@color/details_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_tms_order_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:background="@null"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/red"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="承运商："
+                android:textColor="@color/details_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_tms_shipment_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:background="@null"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/red"
+                android:textSize="13sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="出库："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_tms_date_issue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="司机手机："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_tms_order_fromName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="司机姓名："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_tms_driver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="到达名称："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_tms_order_toName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="订单状态："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_ord_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="到达地址："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_toAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="货物总数："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_ord_issue_qty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="货物总重："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_workFlow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="交付状态："
+                    android:textColor="@color/details_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_tms_driver_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btn_order_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/yb_light_green_btn_round_bg"
+                android:gravity="center"
+                android:text="查看详情"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_driver_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/yb_yellow_btn_round_bg"
+                android:gravity="center"
+                android:text="交付订单"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="25dp"
+    android:paddingRight="5dp"
+    android:layout_margin="1dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/tip"
+    android:id="@+id/ll_order_choose"
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发货单号："
+            android:textColor="@color/details_text"
+            />
+        <TextView
+            android:id="@+id/tv_orderIDX"
+            android:paddingLeft="0dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="00000"
+            />
+    </LinearLayout>
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <TextView
+          android:paddingTop="0dp"
+          android:paddingRight="0dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="出库时间："
+          android:textColor="@color/details_text"
+          />
+      <TextView
+
+          android:id="@+id/tv_order_issueDate"
+          android:paddingLeft="0dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="2000/1/1 00:00:00"
+          android:textColor="@color/red"
+          />
+  </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="到达名称："
+            android:textColor="@color/details_text"
+            />
+        <TextView
+
+            android:id="@+id/tv_order_to_name"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="送到地点的客户名称"
+            android:singleLine="true"
+            android:textColor="@color/red"
+            />
+    </LinearLayout>
+
+</LinearLayout>

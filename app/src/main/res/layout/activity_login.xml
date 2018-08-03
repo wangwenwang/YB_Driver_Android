@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.kaidongyuan.app.basemodule.widget.SlidingTitleView
+    android:id="@+id/title_view_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_marginTopPercent="30%"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/rounded_white_box_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/user_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/user"
+                        android:drawablePadding="10dp"
+                        android:hint="请输入手机号"
+                        android:inputType="phone"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColor="#000"
+                        android:textColorHint="#CCCCCC" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#adb1b4" />
+
+                    <EditText
+                        android:id="@+id/user_psw_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/lock"
+                        android:drawablePadding="10dp"
+                        android:hint="请输入密码"
+                        android:inputType="textPassword"
+                        android:padding="12dp"
+                        android:textColor="#000"
+                        android:textColorHint="#CCCCCC" />
+                </LinearLayout>
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="68%"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" >
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/login_btn_round_bg"
+            android:text="登\t录"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_btn_round_bg"
+            android:onClick="register"
+            android:tag="1"
+            android:text="注\t册"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:visibility="visible"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="right"
+            android:onClick="findPassword"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="忘记密码？"
+            android:textColor="#878787"
+            android:visibility="gone"/>
+    </com.zhy.android.percent.support.PercentLinearLayout>
+
+
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>
