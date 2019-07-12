@@ -136,7 +136,7 @@ public class Constants {
          * strOrderIdx  strLicense
          */
 //        public static final String DriverPay = Test_Url + "DriverPay";
-        public static final String DriverPay = Base_Url + "DriverPay";
+        public static final String DriverPay = Base_Url + "DriverPay1";
         public static final String IsPayedOrder=Base_Url0+"IsPayedOrder";
 
         /**

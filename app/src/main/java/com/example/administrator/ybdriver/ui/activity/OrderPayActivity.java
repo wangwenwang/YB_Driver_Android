@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -26,6 +28,7 @@ import com.example.administrator.ybdriver.httpclient.OrderAsyncHttpClient;
 import com.example.administrator.ybdriver.ui.base.BaseActivity;
 import com.example.administrator.ybdriver.ui.fragment.UnpayedFragment;
 import com.example.administrator.ybdriver.utils.SharedPreferencesUtils;
+import com.example.administrator.ybdriver.utils.Tools;
 import com.example.administrator.ybdriver.utils.baidumapUtils.DataUtil;
 import com.kaidongyuan.app.basemodule.interfaces.AsyncHttpCallback;
 import com.kaidongyuan.app.basemodule.utils.nomalutils.AnimationUtil;
@@ -36,7 +39,16 @@ import com.kaidongyuan.app.basemodule.widget.AutographView;
 import com.kaidongyuan.app.basemodule.widget.MLog;
 import com.kaidongyuan.app.basemodule.widget.SlidingTitleView;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.File;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,6 +101,9 @@ public class OrderPayActivity extends BaseActivity implements AsyncHttpCallback,
     private final int REQUESTCAMERA_STATUS_CODE0=8880;//android6.0 查询调用摄像头授权标识码
     private final int REQUESTCAMERA_STATUS_CODE1=8881;
     private static boolean IsCamera=false;
+    private String ORD_TO_ADDRESS;//目的地址
+    private String ORD_TO_lng;    //目的地址经度
+    private String ORD_TO_lat;    //目的地址纬度
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +116,73 @@ public class OrderPayActivity extends BaseActivity implements AsyncHttpCallback,
         if (Build.VERSION.SDK_INT>=23) {
             MPermissionsUtil.checkAndRequestPermissions(OrderPayActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUESTCAMERA_STATUS_CODE1);
         }
+
+        new Thread() {
+
+            public void run() {
+
+                geocoderToLocation(ORD_TO_ADDRESS);
+            }
+        }.start();
+    }
+
+    public void geocoderToLocation(String address) {
+
+        String a = "http://api.map.baidu.com/geocoder/v2/?address=";
+        String b = "&output=json&ak=dUz4AKCXgwSrbGOYRNTyy8Mya0tg6b1c&mcode=com.kaidongyuan.Geocoder";
+        String urlStr = a + address + b;
+        Log.d("LM", urlStr);
+
+        HttpURLConnection conn = null;
+        try {
+
+            URL url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestMethod("GET");
+            if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
+
+                Log.d("LM", "地址转坐标成功");
+                InputStream in = conn.getInputStream();
+                String resultStr = Tools.inputStream2String(in);
+                resultStr = URLDecoder.decode(resultStr, "UTF-8");
+
+                try {
+                    JSONObject jsonObj = (JSONObject) (new JSONParser().parse(resultStr));
+                    Log.i("LM", jsonObj.toJSONString() + "\n" + jsonObj.getClass());
+                    String status = (String) jsonObj.get("status").toString();
+
+                    Log.d("LM", "fd:" + jsonObj.get("result") + jsonObj.get("result").getClass());
+                    if (jsonObj.get("result").getClass().getName().equals(org.json.simple.JSONObject.class.getName())) {
+
+                        org.json.simple.JSONObject dict = (org.json.simple.JSONObject) jsonObj.get("result");
+                        long comprehension = (long) dict.get("comprehension");
+                        long confidence = (long) dict.get("confidence");
+                        String level = (String) dict.get("level").toString();
+                        long precise = (long) dict.get("precise");
+                        org.json.simple.JSONObject dicLocation = (org.json.simple.JSONObject) dict.get("location");
+
+                        String lat = (String) dicLocation.get("lat").toString();
+                        String lng = (String) dicLocation.get("lng").toString();
+                        ORD_TO_lng = lng;
+                        ORD_TO_lat = lat;
+
+                        Log.d("LM", address);
+                        Log.d("LM", ORD_TO_lng + "    " + ORD_TO_lat);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                in.close();
+            } else {
+                Log.i("PostGetUtil", "get请求失败");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.disconnect();
+        }
     }
 
     private void initview() {
@@ -110,6 +192,7 @@ public class OrderPayActivity extends BaseActivity implements AsyncHttpCallback,
         Intent intent=getIntent();
         orderIDX=intent.getStringExtra("order_id");
         orderDriverPay=intent.getStringExtra("order_driver_pay");
+        ORD_TO_ADDRESS=intent.getStringExtra("ORD_TO_ADDRESS");
         mClient=new OrderAsyncHttpClient(this,this);
         if (orderIDX==null||orderIDX.length()<=0||orderDriverPay==null||orderDriverPay.length()<=0){
             showToastMsg("订单信息丢失，请重新加载");
@@ -188,7 +271,7 @@ public class OrderPayActivity extends BaseActivity implements AsyncHttpCallback,
     public void postSuccessMsg(String msg, String request_tag) {
         if (msg.equals("error")&request_tag.equals(Tag_Pay)){
             MLog.w("postSuccessMsg error");
-            finish();
+//            finish();
         }else if (request_tag.equals(Tag_Pay)){
             showToastMsg("提交成功");
 //            if (orderDriverPay.equals("S")) {
@@ -264,16 +347,38 @@ public class OrderPayActivity extends BaseActivity implements AsyncHttpCallback,
             if (pictureBitmap1!=null&&pictureBitmap2!=null){
                 String strpicture1=BitmapUtil.changeBitmapToString(pictureBitmap1);
                 String strpicture2=BitmapUtil.changeBitmapToString(pictureBitmap2);
+                SharedPreferences readLatLng = getSharedPreferences("w_UserInfo", MODE_MULTI_PROCESS);
+                String currtLongitude = readLatLng.getString("currtLongitude", "");
+                String currLatitude = readLatLng.getString("currLatitude", "");
+
+
+                currLatitude = "22.71011111111111";
+                currtLongitude = "113.8584311111111";
+
+
                 Map<String, String> params = new HashMap<>();
                 params.put("strOrderIdx", orderIDX);
                 params.put("strLicense", "");
                 params.put("PictureFile1", strpicture1);
                 params.put("PictureFile2", strpicture2);
+                params.put("toLng", ORD_TO_lng);
+                params.put("toLat", ORD_TO_lat);
+                params.put("currentLng", currtLongitude);
+                params.put("currentLat", currLatitude);
+
+                Log.d("LM", "strOrderIdx: " + ORD_TO_lng);
+                Log.d("LM", "ORD_TO_lng: " + ORD_TO_lng);
+                Log.d("LM", "ORD_TO_lat: " + ORD_TO_lat);
+                Log.d("LM", "currtLongitude: " + currtLongitude);
+                Log.d("LM", "currLatitude: " + currLatitude);
                 if (orderDriverPay.equals("N")){
                     params.put("AutographFile", "S");
+                    Log.d("LM", "AutographFile: " + "S");
                 }else {
                     params.put("AutographFile", "Y");
+                    Log.d("LM", "AutographFile: " + "Y");
                 }
+
                 mClient.sendRequest(Constants.URL.DriverPay,params,Tag_Pay,true);
             }else {
                 showToastMsg("请重新采集拍照");

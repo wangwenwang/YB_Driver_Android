@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.IBinder;
@@ -251,6 +252,12 @@ public class TrackingService extends Service {
                 }
                 return;
             }
+
+            // 记住当前坐标
+            SharedPreferences crearPre = mContext.getSharedPreferences("w_UserInfo", MODE_PRIVATE);
+            crearPre.edit().putString("currtLongitude", Double.toString(location.getLongitude())).commit();
+            crearPre.edit().putString("currLatitude", Double.toString(location.getLatitude())).commit();
+
             MLog.w( "TrackingService.getLocation:Success\t,mLat:"+mLat+"\tmLng:"+mLng);
             if (mLat == 0 || mLng == 0) {
                 mLat = location.getLatitude();

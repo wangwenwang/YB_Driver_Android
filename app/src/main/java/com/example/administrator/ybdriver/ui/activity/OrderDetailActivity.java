@@ -293,6 +293,7 @@ public class OrderDetailActivity extends BaseActivity implements AsyncHttpCallba
                         Intent intent = new Intent(OrderDetailActivity.this, OrderPayActivity.class);
                         intent.putExtra("order_id", mOrder.getIDX());
                         intent.putExtra("order_driver_pay",mOrder.getDRIVER_PAY());
+                        intent.putExtra("ORD_TO_ADDRESS", mOrder.getORD_TO_ADDRESS());
                         if (currentlocation!=null){
                             intent.putExtra("latitude",currentlocation.getLatitude());
                             intent.putExtra("longitude",currentlocation.getLongitude());
@@ -334,6 +335,7 @@ public class OrderDetailActivity extends BaseActivity implements AsyncHttpCallba
                         Intent intent = new Intent(OrderDetailActivity.this, OrderPayActivity.class);
                         intent.putExtra("order_id", mOrder.getIDX());
                         intent.putExtra("order_driver_pay",mOrder.getDRIVER_PAY());
+                        intent.putExtra("ORD_TO_ADDRESS", mOrder.getORD_TO_ADDRESS());
                         startActivity(intent);
                     }  else if (mOrder != null && mOrder.getIDX() != null){
                         showToastMsg("仅司机本人可提交订单!");

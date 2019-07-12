@@ -37,4 +37,5 @@ dependencies {
     compile project(':PushSDK')
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
     compile 'com.google.zxing:core:3.3.0'
+    compile files('libs/json-simple-1.1.1.jar')
 }

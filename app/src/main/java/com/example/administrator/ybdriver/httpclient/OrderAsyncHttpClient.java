@@ -42,6 +42,9 @@ public class OrderAsyncHttpClient extends BaseAsyncHttpClient {
         }
         if (jo.containsKey("type")){
             switch (jo.getIntValue("type")){
+                case -3:
+                    result = "error";
+                    break;
                 case -2:
                     result = "error";
                     break;
